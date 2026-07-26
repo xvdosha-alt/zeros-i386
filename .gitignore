@@ -1,0 +1,27 @@
+# build
+out/
+build/
+*.o
+*.elf
+*.iso
+*.bin
+host/minipy
+host/test_runner
+
+# packed userland (rebuild via make)
+initrd/bin/*
+initrd/gui/*
+
+# editor / OS
+.DS_Store
+*.swp
+*~
+.vscode/
+.idea/
+
+# Cursor / AI tooling
+.cursor/
+.cursorignore
+.cursorrules
+AGENTS.md
+*.canvas.tsx

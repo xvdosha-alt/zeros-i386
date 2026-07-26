@@ -1,0 +1,276 @@
+# minipy regression suite
+# format:
+#   ### name
+#   <source>
+#   ---
+#   <expected stdout / expression result>
+#   ###! name   — expect runtime error containing the text after ---
+#   ###@seed    — seed stdlib boot (no source block)
+
+### expr_add
+1+2
+---
+3
+
+### expr_mul_precedence
+print(1+2*3)
+---
+7
+
+### expr_floor_div
+print(10//3)
+---
+3
+
+### expr_mod
+print(10%3)
+---
+1
+
+### expr_sub_neg
+print(5-8)
+print(-3+1)
+---
+-3
+-2
+
+### print_str
+print("hi")
+---
+hi
+
+### str_concat
+print("ab"+"c")
+---
+abc
+
+### str_repeat
+print("ab"*3)
+---
+ababab
+
+### str_index
+print("xyz"[1])
+---
+y
+
+### str_len
+print(len("abc"))
+---
+3
+
+### assign_print
+x=10
+print(x*2)
+---
+20
+
+### bool_and
+print(True and False)
+---
+False
+
+### bool_or
+print(False or True)
+---
+True
+
+### bool_not
+print(not 0)
+print(not 1)
+---
+True
+False
+
+### cmp_chain
+print(1<2)
+print(3==3)
+print(4!=5)
+print(2<=2)
+print(3>=4)
+---
+True
+True
+True
+True
+False
+
+### if_true
+if 1:
+ print(1)
+---
+1
+
+### if_else
+a=1
+if a:
+ print("yes")
+else:
+ print("no")
+---
+yes
+
+### if_else_false
+a=0
+if a:
+ print("yes")
+else:
+ print("no")
+---
+no
+
+### while_count
+x=0
+while x<3:
+ x=x+1
+print(x)
+---
+3
+
+### for_range
+for i in range(3):
+ print(i)
+---
+0
+1
+2
+
+### for_list
+for x in [7,8,9]:
+ print(x)
+---
+7
+8
+9
+
+### for_str
+for c in "ab":
+ print(c)
+---
+a
+b
+
+### list_index_len
+xs=[1,2,3]
+print(xs[0])
+print(len(xs))
+---
+1
+3
+
+### list_append
+xs=[10]
+append(xs,20)
+print(xs[1])
+print(len(xs))
+---
+20
+2
+
+### list_concat
+print(len([1,2]+[3]))
+---
+3
+
+### builtins_cast
+print(str(42))
+print(int("7")+1)
+print(type(1))
+print(type("a"))
+---
+42
+8
+int
+str
+
+### def_add
+def add(a,b):
+ return a+b
+print(add(2,40))
+---
+42
+
+### def_nested_call
+def twice(x):
+ return x*2
+def add4(x):
+ return twice(x)+twice(2)
+print(add4(3))
+---
+10
+
+### def_fact
+def fact(n):
+ if n<=1:
+  return 1
+ return n*fact(n-1)
+print(fact(5))
+---
+120
+
+### def_default_local
+def f():
+ x=1
+ return x
+print(f())
+---
+1
+
+### fs_roundtrip
+f=open("a.txt","w")
+write(f,"hello")
+close(f)
+f=open("a.txt","r")
+print(read(f))
+close(f)
+---
+hello
+
+### fs_exists_remove
+f=open("b.txt","w")
+write(f,"x")
+close(f)
+print(exists("b.txt"))
+remove("b.txt")
+print(exists("b.txt"))
+---
+True
+False
+
+### fs_listdir
+f=open("c.txt","w")
+write(f,"ab")
+close(f)
+print(listdir())
+---
+c.txt
+
+### import_module
+f=open("lib.py","w")
+write(f,"def twice(x):\n return x*2\n")
+close(f)
+import lib
+print(twice(21))
+---
+42
+
+### multi_stmt_print
+print(1)
+print(2)
+print(3)
+---
+1
+2
+3
+
+###! div_zero
+print(1//0)
+---
+ZeroDivision
+
+###! bad_name
+print(no_such_var)
+---
+NameError
+
+###@seed

@@ -1,0 +1,10 @@
+Shell	/sys/gui/gterm.win msh
+Files	/sys/gui/files.win
+Notepad	/sys/gui/notepad.win
+Calculator	/sys/gui/calc.win
+Hex	/sys/gui/hex.win
+Paint	/sys/gui/paint.win
+Settings	/sys/gui/settings.win
+Clock	/sys/gui/clock.win
+About	/sys/gui/about.win
+Network	/sys/gui/netinfo.win

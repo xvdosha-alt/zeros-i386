@@ -1,0 +1,1 @@
+print("demo package script")

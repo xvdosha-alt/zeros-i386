@@ -1,0 +1,7 @@
+[Unit]
+Name=netd
+After=local-fs
+[Service]
+Type=oneshot
+Exec=kernel:netd
+Restart=on-failure

@@ -1,0 +1,3 @@
+# GUI settings (settings.win). beep=1 enable PC speaker cues.
+beep=1
+mouse_accel=1

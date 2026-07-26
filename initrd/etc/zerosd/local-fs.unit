@@ -1,0 +1,6 @@
+[Unit]
+Name=local-fs
+[Service]
+Type=oneshot
+Exec=kernel:local-fs
+Restart=no

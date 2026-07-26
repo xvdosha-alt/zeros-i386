@@ -1,0 +1,7 @@
+[Unit]
+Name=session
+After=netd
+[Service]
+Type=simple
+Exec=/sys/bin/session
+Restart=on-failure
