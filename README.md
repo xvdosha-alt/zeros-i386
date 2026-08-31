@@ -1,6 +1,11 @@
+EN | [RU](docs/README_RU.md)
+
 # zerOS
 
-Bare-metal **i386** micro-OS: Multiboot kernel, cooperative processes, in-memory ramfs, virtio networking, and a Win95-flavoured GUI desktop — all freestanding, no libc.
+![C](https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=black)
+
+
+Bare-metal **i386** micro-OS: Multiboot kernel, cooperative processes, in-memory ramfs, virtio networking, and a Win95-flavoured GUI desktop - all freestanding, no libc.
 
 ![zerOS desktop](demo.jpg)
 
@@ -53,7 +58,7 @@ Boot into framebuffer mode; `session` starts the window manager.
 
 **Taskbar:** `[Z]` opens launchpad (left); `X` exits the session (right).
 
-**Clipboard:** `SYS_CLIP_SET` / `SYS_CLIP_GET` — Notepad Ctrl+C/V, Files Ctrl+C copies path.
+**Clipboard:** `SYS_CLIP_SET` / `SYS_CLIP_GET` - Notepad Ctrl+C/V, Files Ctrl+C copies path.
 
 **Network:** `/sys/etc/network.conf` (`ip=`/`mask=`/`gw=`/`dns=`) or QEMU SLIRP defaults.
 
@@ -71,7 +76,7 @@ Boot into framebuffer mode; `session` starts the window manager.
 tty → mm → IDT → PIT@100Hz → vfs → initrd → proc → syscalls → net → zerosd
 ```
 
-Initrd is **not** a Multiboot module: `scripts/pack_initrd.py` packs `initrd/` into a TLV blob that is `INCBIN`’d into the kernel.
+Initrd is **not** a Multiboot module: `scripts/pack_initrd.py` packs `initrd/` into a TLV blob that is `INCBIN`'d into the kernel.
 
 **No paging.** Physical == virtual. The ELF loader writes `PT_LOAD` into a fixed VMA per program. Scheduling is cooperative / blocking (`spawn` → `wait`); the timer tick does not preempt user code.
 
